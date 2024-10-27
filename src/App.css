@@ -17,14 +17,6 @@ button {
   font-size: 1.5rem;
 }
 
-.capitalize {
-  text-transform: capitalize;
-}
-
-.sprite {
-  scale: 1;
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;

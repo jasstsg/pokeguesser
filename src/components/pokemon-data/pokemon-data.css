@@ -1,0 +1,21 @@
+.pokemon-data {
+    text-align: left;
+}
+
+.basic-info, .bio-info {
+    width: 25%;
+}
+
+.moves-info {
+    width: 50%;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+  
+.sprite {
+    text-align: center;
+    max-height: 25vh;
+    max-width: 25vh;
+}
