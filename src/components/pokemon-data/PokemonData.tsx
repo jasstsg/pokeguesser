@@ -1,5 +1,6 @@
 import { Pokemon } from "pokenode-ts";
 import './pokemon-data.css';
+import Stats from '../stats/Stats';
 
 
 function PokemonData(props: any) {
@@ -9,35 +10,30 @@ function PokemonData(props: any) {
     var form = nameData.length > 1 ? `(${nameData[1]})` : '';
 
     return (
-        <div className="pokemon-data">
-            <div className="flex-row">
-                <div className="basic-info flex-col">
-                    <h1 className="capitalize">{`${name} ${form}`}</h1>
-                    <img className="sprite" src={pokemon.sprites.front_default ?? ""} alt="pokemon image" />
-                    <div>{pokemon.stats.map(s => (
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>{s.stat.name}</td>
-                                    <td>{s.base_stat}</td>
-                                    <td>{s.effort}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    ))}
+        <div className="pokemon-data capitalize grid-1-1">
+                <div className="bio">
+                    <div className="pokemon-name">
+                        <h1>{`${name} ${form}`} [{pokemon.types.map(t => t.type.name).join(",")}]</h1>
+                    </div>
+                    <div className="bio-details grid-1-1">
+                        <Stats stats={pokemon.stats}></Stats>
+                        <div>
+                            <div className="sprites">
+                                <img src={pokemon.sprites.front_default ?? ""} alt="pokemon default image" />
+                                <img src={pokemon.sprites.front_shiny ?? ""} alt="pokemon shiny image" />
+                            </div>
+                            <div>
+                                <div>Height: {pokemon.height / 10}m | Weight: {pokemon.weight / 10}kg</div>
+                                <div>Abilities: {pokemon.abilities.map(a => a.ability.name.replace("-", " ")).join(",")}</div>
+                                <div>Held Items: {pokemon.held_items.length > 0 ? pokemon.held_items.map(h => h.item.name.replace("-", " ")).join(",") : "None"}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                <div className="bio-info flex-col">
-                    <div>Height: {pokemon.height / 10}m</div>
-                    <div>Weight: {pokemon.weight / 10}kg</div>
-                    <div>Types: {pokemon.types.map(t => t.type.name).join(",")}</div>
-                    <div>Abilities: {pokemon.abilities.map(a => a.ability.name.replace("-", " ")).join(",")}</div>
-                    <div>Forms: {pokemon.forms.map(f => f.name).join(",")}</div>
-                    <div>Species: {pokemon.species.name}</div>
-                    <div>Held Items: {pokemon.held_items.map(h => h.item.name.replace("-", " ")).join(",")}</div>
-                </div>
-                <div className="moves-info flex-col">
-                    <div>Moves: {pokemon.moves.map(m => m.move.name.replace("-", " ")).join(",")}</div>
+            <div className="moves">
+                <h3>Moves</h3>
+                <div>
+                    {pokemon.moves.map(m => m.move.name.replace("-", " ")).join(", ")}
                 </div>
             </div>
         </div>

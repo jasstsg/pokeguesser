@@ -1,16 +1,55 @@
-.App {
-  text-align: center;
+:root {
+  /* 
+    Typography colours from: 
+    https://medium.com/@Skaoi/designing-a-pok%C3%A9mon-application-wireframes-ui-and-prototype-9cc6ec4de477
+  */
+  --red: #f14b3d;
+  --white: #f8f9fa;
+  --grey: #595f65;
+  --yellow: #fdd85d;
+  --blue: #072ac8;
+
+  /* Type colours */
+  /*
+  --normal:
+  --fighting:
+  --flying:
+  --poison:
+  --ground:
+  --rock:
+  --bug:
+  --ghost:
+  --steel:
+  --fire:
+  --water:
+  --grass:
+  --electric:
+  --psychic:
+  --ice:
+  --dragon:
+  --dark:
+  --fairy:
+  --stellar:
+  --unknown:
+  */
 }
 
-.App-header {
-  background-color: #282c34;
+.app-container {
+  color: var(--grey);
+  /* background-color: #282c34; */
+  background-color: var(--white);
+}
+
+.app {
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 button {
@@ -26,4 +65,9 @@ button {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.grid-1-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

@@ -37,16 +37,16 @@ function App() {
   }
 
   var renderedPokemonData = (
-    pokemon ? <PokemonData pokemon={pokemon}></PokemonData> : <></>
+    pokemon ? <PokemonData className="pokemon-data" pokemon={pokemon}></PokemonData> : <></>
   );
   
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <button id="new-pokemon-button" onClick={() => getRandomPokemon()}>Get New Pokemon</button>
-        {renderedPokemonData}
-      </header>
+    <div className="app-container">
+      <div className="app">
+          <button id="new-pokemon-button" onClick={() => getRandomPokemon()}>Get New Pokemon</button>
+          {renderedPokemonData}
+      </div>
     </div>
   )
 }
