@@ -49,11 +49,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(3vh);
 }
 
 button {
   font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.border-left {
+  border-left: solid 1px var(--grey);
+}
+
+.border-right {
+  border-right: solid 1px var(--grey);
 }
 
 .flex-row {
@@ -70,4 +90,9 @@ button {
 .grid-1-1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.grid-1-1-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

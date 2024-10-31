@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { NamedAPIResource, Pokemon, PokemonClient } from 'pokenode-ts'; // Import the Client
+import { NamedAPIResource, NamedAPIResourceList, Pokemon, PokemonClient } from 'pokenode-ts'; // Import the Client
 import PokemonData from './components/pokemon-data/PokemonData';
 
 function App() {
   const api = new PokemonClient();
   const [count, setCount] = useState<number>(0);
   const [allPokemon, setAllPokemon] = useState<NamedAPIResource[] | null>(null);
+  const [allTypes, setAllTypes] = useState<NamedAPIResource[] | null>(null);
   const [ready, setReady] = useState(false);
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   
@@ -17,13 +18,22 @@ function App() {
 
   useEffect(() => {
     async function initialize() {
-      const res = await api.listPokemons(0, 10000);
-      setAllPokemon(res.results)
-      setCount(res.count);
+      const pokemonList = await api.listPokemons(0, 10000);
+      const typeList = await api.listTypes(0, 50);
+      console.log(typeList);
+
+      setAllPokemon(pokemonList.results);
+      setCount(pokemonList.count);
+      setAllTypes(typeList.results);
+
       setReady(true);
     };
     initialize();
   }, []);
+
+  const createTypeDictionary = async (typeList: NamedAPIResource[]) => {
+
+  }
 
   const getRandomPokemon = async () => {
     if (ready && count > 0 && allPokemon) {

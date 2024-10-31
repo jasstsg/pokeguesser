@@ -27,7 +27,7 @@ function Stats(props: any) {
                 </thead>
                 <tbody>
                     {stats.map(s => (
-                        <tr>
+                        <tr key={`row-${s.stat.name}`}>
                             <td>{getStatShortForm(s.stat.name)}</td>
                             <td>{s.base_stat}</td>
                             <td>{s.effort}</td>
