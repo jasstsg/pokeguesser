@@ -1,22 +1,32 @@
 import { Pokemon, PokemonType } from "pokenode-ts";
 import './pokemon-data.css';
 import Stats from '../stats/Stats';
+import { ExtendedType, ExtendedTypeDictionary } from "../../interfaces/ExtendedType";
 
 
 function PokemonData(props: any) {
     const pokemon = props.pokemon as Pokemon;
+    const types = props.types as ExtendedTypeDictionary;
+
     var nameData = pokemon?.name.split("-");
     var name = nameData[0];
     var form = nameData.length > 1 ? `(${nameData[1]})` : '';
 
     const getTypes = (types: PokemonType[]) => {
         return types.map(t => {
-            let typeKey = `type-${t.type.name}`;
-            return (<span key={typeKey} className={`type-tag ${typeKey}`}>{t.type.name}</span>);
+            let typeName = t.type.name;
+            let typeKey = `type-${typeName}`;
+            return (
+                <img key={typeKey} 
+                    className={`type-tag ${typeKey}`}
+                    src={getTypeSprite(typeName)}
+                    alt={typeKey}></img>);
         })
     };
 
-    console.log(getTypes(pokemon.types));
+    const getTypeSprite = (type: string) => {
+        return types[type].sprites["generation-viii"]["sword-shield"].name_icon;
+    }
 
     return (
         <div className="pokemon-data capitalize grid-1-1">

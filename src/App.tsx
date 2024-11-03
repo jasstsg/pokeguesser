@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
-import { NamedAPIResource, NamedAPIResourceList, Pokemon, PokemonClient } from 'pokenode-ts'; // Import the Client
+import { NamedAPIResource, Pokemon } from 'pokenode-ts';
 import PokemonData from './components/pokemon-data/PokemonData';
+import { ExtendedPokemonClient } from './classes/ExtendedPokemonClient';
+import { ExtendedType, ExtendedTypeDictionary } from './interfaces/ExtendedType';
 
 function App() {
-  const api = new PokemonClient();
+  const api = new ExtendedPokemonClient();
   const [count, setCount] = useState<number>(0);
   const [allPokemon, setAllPokemon] = useState<NamedAPIResource[] | null>(null);
-  const [allTypes, setAllTypes] = useState<NamedAPIResource[] | null>(null);
+  const [allTypes, setAllTypes] = useState<ExtendedTypeDictionary | null>(null);
   const [ready, setReady] = useState(false);
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   
@@ -20,19 +21,28 @@ function App() {
     async function initialize() {
       const pokemonList = await api.listPokemons(0, 10000);
       const typeList = await api.listTypes(0, 50);
-      console.log(typeList);
+      const extendedTypeDict = await getExtendedTypeDict(typeList.results);
 
       setAllPokemon(pokemonList.results);
       setCount(pokemonList.count);
-      setAllTypes(typeList.results);
+      setAllTypes(extendedTypeDict);
 
       setReady(true);
     };
     initialize();
   }, []);
 
-  const createTypeDictionary = async (typeList: NamedAPIResource[]) => {
+  const getExtendedTypeDict = async (typeList: NamedAPIResource[]) => {
+    let dict: ExtendedTypeDictionary = {};
 
+    // Map existing types to new extended type interface
+    for (let i = 0; i < typeList.length; i++) {
+      let typeName = typeList[i].name;
+      let extendedType = await api.getExtendedTypeByName(typeName);
+      dict[typeName] = extendedType;
+    }
+    
+    return dict;
   }
 
   const getRandomPokemon = async () => {
@@ -47,7 +57,7 @@ function App() {
   }
 
   var renderedPokemonData = (
-    pokemon ? <PokemonData className="pokemon-data" pokemon={pokemon}></PokemonData> : <></>
+    pokemon ? <PokemonData className="pokemon-data" pokemon={pokemon} types={allTypes}></PokemonData> : <></>
   );
   
   
