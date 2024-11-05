@@ -1,4 +1,5 @@
 import { PokemonStat } from "pokenode-ts";
+import './stats.scss'
 
 
 function Stats(props: any) {
@@ -17,6 +18,7 @@ function Stats(props: any) {
 
     return (
         <div className="pokemon-stats">
+            <h3 className="pokemon-font">Stats</h3>
             <table>
                 <thead>
                     <tr>

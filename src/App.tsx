@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
+import './App.grid.scss';
 import { NamedAPIResource, Pokemon } from 'pokenode-ts';
 import PokemonData from './components/pokemon-data/PokemonData';
 import { ExtendedPokemonClient } from './classes/ExtendedPokemonClient';
@@ -64,6 +65,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="app">
+          <h1 className="pokemon-font">PokeGuesser</h1>
           <button id="new-pokemon-button" onClick={() => getRandomPokemon()}>Get New Pokemon</button>
           {renderedPokemonData}
       </div>

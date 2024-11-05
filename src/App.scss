@@ -1,0 +1,75 @@
+:root {
+  /* 
+    Typography colours from: 
+    https://medium.com/@Skaoi/designing-a-pok%C3%A9mon-application-wireframes-ui-and-prototype-9cc6ec4de477
+  */
+  --red: #f14b3d;
+  --white: #f8f9fa;
+  --grey: #595f65;
+  --yellow: #fdd85d;
+  --blue: #072ac8;
+}
+
+.app-container {
+  color: var(--grey);
+  /* background-color: #282c34; */
+  background-color: var(--red);
+}
+
+.app {
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2vh);
+}
+
+
+button {
+  padding: 10px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.pokemon-font {
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 3px 0 var(--blue), 
+              -3px 0 var(--blue), 
+              0 3px var(--blue), 
+              0 -3px var(--blue);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.pokemon-data > * {
+  border-radius: 20px;
+  border-width: 10px;
+  border-color: var(--grey);
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--white);
+}
+
+table {
+  font-size: 80%;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  th, td {
+      text-align: left;
+      padding-right: 2vw;
+      padding-top: 10px; 
+
+      &:first-child {
+        white-space: nowrap;
+      }
+  }
+}

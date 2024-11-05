@@ -1,0 +1,20 @@
+.pokemon-stats {
+    grid-area: stats;
+}
+.pokemon-profile {
+    grid-area: profile;
+}
+.pokemon-bio {
+    grid-area: bio;
+}
+.pokemon-moves {
+    grid-area: moves;
+}
+.pokemon-data {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "stats profile bio"
+        "moves moves moves";
+}
