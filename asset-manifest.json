@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pokeguesser/static/css/main.9ea7ad5a.css",
-    "main.js": "/pokeguesser/static/js/main.6880e6ac.js",
+    "main.css": "/pokeguesser/static/css/main.0f059c51.css",
+    "main.js": "/pokeguesser/static/js/main.c5c97ddb.js",
     "static/js/453.12d4ea55.chunk.js": "/pokeguesser/static/js/453.12d4ea55.chunk.js",
     "index.html": "/pokeguesser/index.html",
-    "main.9ea7ad5a.css.map": "/pokeguesser/static/css/main.9ea7ad5a.css.map",
-    "main.6880e6ac.js.map": "/pokeguesser/static/js/main.6880e6ac.js.map",
+    "main.0f059c51.css.map": "/pokeguesser/static/css/main.0f059c51.css.map",
+    "main.c5c97ddb.js.map": "/pokeguesser/static/js/main.c5c97ddb.js.map",
     "453.12d4ea55.chunk.js.map": "/pokeguesser/static/js/453.12d4ea55.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ea7ad5a.css",
-    "static/js/main.6880e6ac.js"
+    "static/css/main.0f059c51.css",
+    "static/js/main.c5c97ddb.js"
   ]
 }
