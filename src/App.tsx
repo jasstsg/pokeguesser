@@ -122,7 +122,10 @@ function App() {
       <div className="app">
           <h1 className="pokemon-font">PokeGuesser</h1>
           <div className="buttons">
-            <button onClick={() => getRandomPokemon()}>New pokemon</button>
+            {
+              ready ? <button onClick={() => getRandomPokemon()}>New pokemon</button> 
+              : <p className="pokemon-font">loading...</p> 
+            }
             <button className="show-if-pokemon-ready" onClick={() => getClue()}>Get a clue</button>
             <button className="show-if-pokemon-ready" onClick={() => revealPokemon()}>Reveal pokemon</button>
           </div>
