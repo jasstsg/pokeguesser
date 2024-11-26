@@ -6,6 +6,8 @@ import PokemonData from './components/pokemon-data/PokemonData';
 import { ExtendedPokemonClient } from './classes/ExtendedPokemonClient';
 import { ExtendedType, ExtendedTypeDictionary } from './interfaces/ExtendedType';
 
+
+
 function App() {
   const api = new ExtendedPokemonClient();
   const [count, setCount] = useState<number>(0);
@@ -54,6 +56,59 @@ function App() {
       // The id of the pokemon is the second last element in the array
       setPokemon(await api.getPokemonById(parseInt(urlArray[urlArray.length - 2])));
 
+      let showIfPokemonReady = document.querySelectorAll<HTMLElement>('.show-if-pokemon-ready');
+      showIfPokemonReady.forEach(x => x.style.display = 'block');
+
+      hideHiddenValues();
+    }
+  }
+
+  const revealHiddenElement = (element: Element) => {
+    let revealedValue = element.querySelector<HTMLElement>('.revealed');
+    if (revealedValue) {
+      revealedValue.style.display = 'block';
+    }
+    let hiddenValue = element.querySelector<HTMLElement>('.hidden');
+    if (hiddenValue) {
+      hiddenValue.style.display = 'none';
+    }
+  }
+
+  const getClue = () => {
+    let clues = document.querySelectorAll('.clue');
+    if (clues.length > 0) {
+      let selected = clues[getRandomIntBetween(0, clues.length - 1)];
+      revealHiddenElement(selected);
+    }
+    else {
+      alert("no more cluess to reveal!");
+    }
+  }
+
+  const hideHiddenValues = () => {
+    let revealedValue = document.querySelectorAll<HTMLElement>('.revealed');
+    if (revealedValue) {
+      revealedValue.forEach(v => v.style.display = 'none');
+    }
+
+    let hiddenValue = document.querySelectorAll<HTMLElement>('.hidden');
+    if (hiddenValue) {
+      hiddenValue.forEach(v => v.style.display = 'block');
+    }
+  }
+
+  const revealPokemon = () => {
+    let selectedPokemonNodes = document.querySelectorAll('.selected-pokemon');
+    if (selectedPokemonNodes) {
+      selectedPokemonNodes.forEach(n => revealHiddenElement(n));
+    }
+    revealClues();
+  }
+
+  const revealClues = () => {
+    let clueNodes = document.querySelectorAll('.clue');
+    if (clueNodes) {
+      clueNodes.forEach(n => revealHiddenElement(n));
     }
   }
 
@@ -66,7 +121,11 @@ function App() {
     <div className="app-container">
       <div className="app">
           <h1 className="pokemon-font">PokeGuesser</h1>
-          <button id="new-pokemon-button" onClick={() => getRandomPokemon()}>Get New Pokemon</button>
+          <div className="buttons">
+            <button onClick={() => getRandomPokemon()}>New pokemon</button>
+            <button className="show-if-pokemon-ready" onClick={() => getClue()}>Get a clue</button>
+            <button className="show-if-pokemon-ready" onClick={() => revealPokemon()}>Reveal pokemon</button>
+          </div>
           {renderedPokemonData}
       </div>
     </div>

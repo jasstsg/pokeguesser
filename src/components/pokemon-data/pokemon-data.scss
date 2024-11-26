@@ -4,3 +4,31 @@
     margin-right: 5px;
 }
 
+.clue {
+    .revealed {
+        display: none;
+        animation: clue-animation 3s;
+    }
+}
+
+@keyframes clue-animation {
+    0% {
+        text-align: center;
+    }
+    20%, 40%, 60%, 80% {
+        color: var(--red);
+    }    
+    10%, 30%, 50%, 70% {
+        color: var(--yellow);
+    }    
+    90% {
+        text-align: center;
+        scale: 3;
+        font-weight: bold;
+        color: var(--yellow);
+        text-shadow: 1px 0 var(--blue), 
+                    -1px 0 var(--blue), 
+                    0 1px var(--blue), 
+                    0 -1px var(--blue);
+    }
+}

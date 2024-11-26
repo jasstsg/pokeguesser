@@ -1,5 +1,6 @@
 import { PokemonStat } from "pokenode-ts";
 import './stats.scss'
+import HiddenElement from "../hidden-element/HiddenElement";
 
 
 function Stats(props: any) {
@@ -31,8 +32,8 @@ function Stats(props: any) {
                     {stats.map(s => (
                         <tr key={`row-${s.stat.name}`}>
                             <td>{getStatShortForm(s.stat.name)}</td>
-                            <td>{s.base_stat}</td>
-                            <td>{s.effort}</td>
+                            <td><HiddenElement>{s.base_stat}</HiddenElement></td>
+                            <td><HiddenElement>{s.effort}</HiddenElement></td>
                         </tr>
                     ))}
                 </tbody>

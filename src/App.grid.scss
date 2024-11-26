@@ -12,9 +12,16 @@
 }
 .pokemon-data {
     display: grid;
-    grid-template-columns: 25vw 25vw 25vw;
+    justify-content: space-evenly;
+    max-width: 1200px;
+    width: 100%;
+    grid-template-columns: 25% 50% 25%;
     grid-template-rows: auto;
     grid-template-areas: 
         "stats profile bio"
         "moves moves moves";
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 33% 34% 33%;
+    }
 }

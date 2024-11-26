@@ -1,5 +1,6 @@
 import { NamedAPIResource, Pokemon, PokemonStat } from "pokenode-ts";
 import './bio.scss'
+import HiddenElement from "../hidden-element/HiddenElement";
 
 
 function Bio(props: any) {
@@ -12,29 +13,33 @@ function Bio(props: any) {
                 <tbody>
                     <tr>
                         <td>Height</td>
-                        <td>{pokemon.height / 10}m</td>
+                        <td><HiddenElement>{pokemon.height / 10}m</HiddenElement></td>
                     </tr>
                     <tr>
                         <td>Weight</td>
-                        <td>{pokemon.weight / 10}kg</td>
+                        <td><HiddenElement>{pokemon.weight / 10}kg</HiddenElement></td>
                     </tr>
                     <tr>
                         <td>Held Items</td>
                         <td>
-                            {
-                                pokemon.held_items.length > 0 ?
-                                    pokemon.held_items.map(h => h.item.name.replace("-", " "))
-                                        .join(",") : "None"
-                            }
+                            <HiddenElement>
+                                {
+                                    pokemon.held_items.length > 0 ?
+                                        pokemon.held_items.map(h => h.item.name.replace("-", " "))
+                                            .join(",") : "None"
+                                }
+                            </HiddenElement>
                         </td>
                     </tr>
                     <tr>
                         <td>Abilities</td>
                         <td>
-                            {
-                                pokemon.abilities.map(a => a.ability.name.replace("-", " "))
-                                    .join(", ")
-                            }
+                            <HiddenElement>
+                                {
+                                    pokemon.abilities.map(a => a.ability.name.replace("-", " "))
+                                        .join(", ")
+                                }
+                            </HiddenElement>
                         </td>
                     </tr>
                 </tbody>

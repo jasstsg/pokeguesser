@@ -1,8 +1,15 @@
 
 .pokemon-profile {
-    
-    > img {
-        margin: 3rem;
-        scale: 2;
+
+    .selected-pokemon {
+            
+        img {
+            margin: 3rem;
+            scale: 2;
+        }
+
+        .revealed {
+            display: none;
+        }
     }
 }
